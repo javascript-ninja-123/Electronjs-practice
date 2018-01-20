@@ -1,0 +1,20 @@
+<head>
+</head>
+<body>
+  <form>
+    <div>
+      <label>Enter your todo</label>
+      <input type="text" autofocus/>
+    </div>
+    <button type='submit'>Add</button>
+  </form>
+  <script>
+    const {ipcRenderer} = require('electron');
+    document.querySelector('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const value = document.querySelector('input').value;
+      await ipcRenderer.send('todoAdd', value);
+      document.querySelector('input').value = ''
+    })
+  </script>
+</body>

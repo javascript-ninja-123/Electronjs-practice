@@ -1,0 +1,19 @@
+
+<head>
+
+</head>
+<body>
+    <h1>main</h1>
+    <ul>
+    </ul>
+    <script>
+          const {ipcRenderer} = require('electron');
+          ipcRenderer.on('todoAdd', (e,todo) => {
+            const li = `<li>${todo}</li>`
+            document.querySelector('ul').insertAdjacentHTML('beforeend',li)
+          })
+          ipcRenderer.on('deleteTodo', (e,todo) => {
+            document.querySelector('ul').innerHTML = ''
+          })
+    </script>
+</body>
